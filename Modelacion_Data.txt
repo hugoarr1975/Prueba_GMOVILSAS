@@ -1,0 +1,315 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Nov 29 18:58:51 2020
+@author: Hugo Rojas
+"""
+# -*- coding: utf-8 -*-
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+import os as os
+
+os.getcwd()
+os.chdir('C:/Users/User/OneDrive/Documentos/Personal/GMOVIL/02. Modelacion_datos')
+base = pd.read_csv('data_modelo.csv', sep=',')
+df = pd.DataFrame(base)
+print(df.info())
+print(round(df.describe()))
+df = df.sort_values(['tipologia','Fecha'], ascending=True)
+print(df)
+
+grupo = df.iloc[:,2:5]
+corr_grupo = grupo.groupby(df['tipologia']).corr()
+print(corr_grupo)
+
+
+# Tipologia1
+df_mask1 = df['tipologia']=='T1'
+tipo1 = df[df_mask1]
+tipo1=tipo1.iloc[:,2:5]
+print(tipo1.head())
+print(tipo1.corr())
+
+X1 = tipo1.iloc[:,1].values
+X1 = X1.reshape(-1,1)
+y1 = tipo1.iloc[:, 2].values 
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X1, y1)
+
+pend1=(regressor.coef_)
+inter1=(regressor.intercept_)
+print(pend1)
+print(inter1)
+rdos1 = regressor.score(X1, y1)
+print(rdos1)
+
+#Otros datos de análisis del modelo
+XX1 = sm.add_constant(X1)
+model = sm.OLS(y1,X1)
+results = model.fit()
+results.params 
+print(results.summary())
+
+#Gráfico distancia de los residuos con respecto a la recta de regresión positivos y negativos
+from yellowbrick.regressor import ResidualsPlot
+visualizador = ResidualsPlot(regressor) 
+visualizador.fit(X1,y1)
+visualizador.poof()
+
+# Tipologia2
+df_mask2 = df['tipologia']=='T2'
+tipo2 = df[df_mask2]
+tipo2=tipo2.iloc[:,2:5]
+print(tipo2.head())
+print(tipo2.corr())
+
+X2 = tipo2.iloc[:,1].values
+X2 = X2.reshape(-1,1)
+y2 = tipo2.iloc[:, 2].values
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X2, y2)
+
+pend2=(regressor.coef_)
+inter2=(regressor.intercept_)
+print(pend2)
+print(inter2)
+rdos2 = regressor.score(X2, y2)
+print(rdos2)
+
+#Otros datos de análisis del modelo
+XX2 = sm.add_constant(X2)
+model = sm.OLS(y2,X2)
+results = model.fit()
+results.params 
+print(results.summary())
+
+#Gráfico distancia de los residuos con respecto a la recta de regresión positivos y negativos
+from yellowbrick.regressor import ResidualsPlot
+visualizador = ResidualsPlot(regressor) 
+visualizador.fit(X2,y2)
+visualizador.poof()
+
+# Tipologia3
+df_mask3 = df['tipologia']=='T3'
+tipo3 = df[df_mask3]
+tipo3=tipo3.iloc[:,2:5]
+print(tipo3.head())
+print(tipo3.corr())
+
+X3 = tipo3.iloc[:,1].values
+X3 = X3.reshape(-1,1)
+y3 = tipo3.iloc[:, 2].values
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X3, y3)
+
+pend3=(regressor.coef_)
+inter3=(regressor.intercept_)
+print(pend3)
+print(inter3)
+rdos3 = regressor.score(X3, y3)
+print(rdos3)
+
+#Otros datos de análisis del modelo
+XX3 = sm.add_constant(X3)
+model = sm.OLS(y3,X3)
+results = model.fit()
+results.params 
+print(results.summary())
+
+#Gráfico distancia de los residuos con respecto a la recta de regresión positivos y negativos
+from yellowbrick.regressor import ResidualsPlot
+visualizador = ResidualsPlot(regressor) 
+visualizador.fit(X3,y3)
+visualizador.poof()
+
+# Tipologia4
+df_mask4 = df['tipologia']=='T4'
+tipo4 = df[df_mask4]
+tipo4=tipo4.iloc[:,2:5]
+print(tipo4.head())
+print(tipo4.corr())
+
+X4 = tipo4.iloc[:,1].values
+X4 = X4.reshape(-1,1)
+y4 = tipo4.iloc[:, 2].values
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X4, y4)
+
+pend4=(regressor.coef_)
+inter4=(regressor.intercept_)
+print(pend4)
+print(inter4)
+rdos4 = regressor.score(X4, y4)
+print(rdos4)
+
+#Otros datos de análisis del modelo
+XX4 = sm.add_constant(X4)
+model = sm.OLS(y4,X4)
+results = model.fit()
+results.params 
+print(results.summary())
+
+#Gráfico distancia de los residuos con respecto a la recta de regresión positivos y negativos
+from yellowbrick.regressor import ResidualsPlot
+visualizador = ResidualsPlot(regressor) 
+visualizador.fit(X4,y4)
+visualizador.poof()
+
+# Tipologia5
+df_mask5 = df['tipologia']=='T5'
+tipo5 = df[df_mask5]
+tipo5=tipo5.iloc[:,2:5]
+print(tipo5.head())
+print(tipo5.corr())
+
+X5 = tipo1.iloc[:,1].values
+X5 = X5.reshape(-1,1)
+y5 = tipo1.iloc[:, 2].values
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X5, y5)
+
+pend5=(regressor.coef_)
+inter5=(regressor.intercept_)
+print(pend5)
+print(inter5)
+rdos5 = regressor.score(X5, y5)
+print(rdos5)
+
+#Otros datos de análisis del modelo
+XX5 = sm.add_constant(X5)
+model = sm.OLS(y5,X5)
+results = model.fit()
+results.params 
+print(results.summary())
+
+#Gráfico distancia de los residuos con respecto a la recta de regresión positivos y negativos
+from yellowbrick.regressor import ResidualsPlot
+visualizador = ResidualsPlot(regressor) 
+visualizador.fit(X5,y5)
+visualizador.poof()
+
+# Tipologia6
+df_mask6 = df['tipologia']=='T6'
+tipo6 = df[df_mask6]
+tipo6=tipo6.iloc[:,2:5]
+print(tipo6.head())
+print(tipo6.corr())
+
+X6 = tipo6.iloc[:,1].values
+X6 = X6.reshape(-1,1)
+y6 = tipo6.iloc[:, 2].values
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X6, y6)
+
+pend6=(regressor.coef_)
+inter6=(regressor.intercept_)
+print(pend6)
+print(inter6)
+rdos6 = regressor.score(X6, y6)
+print(rdos6)
+
+#Otros datos de análisis del modelo
+XX6 = sm.add_constant(X6)
+model = sm.OLS(y6,X6)
+results = model.fit()
+results.params 
+print(results.summary())
+
+#Gráfico distancia de los residuos con respecto a la recta de regresión positivos y negativos
+from yellowbrick.regressor import ResidualsPlot
+visualizador = ResidualsPlot(regressor) 
+visualizador.fit(X6,y6)
+visualizador.poof()
+
+# Tipologia7
+df_mask7 = df['tipologia']=='T7'
+tipo7 = df[df_mask7]
+tipo7=tipo7.iloc[:,2:5]
+print(tipo7.head())
+print(tipo7.corr())
+
+X7 = tipo7.iloc[:,1].values
+X7 = X7.reshape(-1,1)
+y7 = tipo7.iloc[:, 2].values
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X7, y7)
+
+pend7=(regressor.coef_)
+inter7=(regressor.intercept_)
+print(pend7)
+print(inter7)
+rdos7 = regressor.score(X7, y7)
+print(rdos7)
+
+#Otros datos de análisis del modelo
+XX7 = sm.add_constant(X7)
+model = sm.OLS(y7,X7)
+results = model.fit()
+results.params 
+print(results.summary())
+
+#Gráfico distancia de los residuos con respecto a la recta de regresión positivos y negativos
+from yellowbrick.regressor import ResidualsPlot
+visualizador = ResidualsPlot(regressor) 
+visualizador.fit(X7,y7)
+visualizador.poof()
+
+# Tipologia8
+df_mask8 = df['tipologia']=='T8'
+tipo8 = df[df_mask8]
+tipo8=tipo8.iloc[:,2:5]
+print(tipo8.head())
+print(tipo8.corr())
+
+X8 = tipo8.iloc[:,1].values
+X8 = X8.reshape(-1,1)
+y8 = tipo8.iloc[:, 2].values
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X8, y8)
+
+pend8=(regressor.coef_)
+inter8=(regressor.intercept_)
+print(pend8)
+print(inter8)
+rdos8 = regressor.score(X8, y8)
+print(rdos8)
+
+#Otros datos de análisis del modelo
+XX8 = sm.add_constant(X8)
+model = sm.OLS(y8,X8)
+results = model.fit()
+results.params 
+print(results.summary())
+
+#Gráfico distancia de los residuos con respecto a la recta de regresión positivos y negativos
+from yellowbrick.regressor import ResidualsPlot
+visualizador = ResidualsPlot(regressor) 
+visualizador.fit(X8,y8)
+visualizador.poof()
+
+
+#Resumen Cuadro Consolidado
+
+consolidado = [['T1', pend1, inter1, rdos1],['T2', pend2, inter2, rdos2],['T3', pend3, inter3, rdos3],
+               ['T4', pend4, inter4, rdos4],['T5', pend5, inter5, rdos5],['T6', pend6, inter6, rdos6],
+               ['T7', pend7, inter7, rdos7],['T8', pend8, inter8, rdos8]]
+resumen = pd.DataFrame(consolidado, columns=('Tipologia','Pendiente', 'Intercepto', 'rdos'))
+print(resumen)

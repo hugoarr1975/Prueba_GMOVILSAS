@@ -1,0 +1,98 @@
+library(dplyr)
+library(tseries)
+getwd()
+data_modelo <- read_csv("Personal/GMOVIL/02. Modelacion_datos/data_modelo.csv")
+View(data_modelo)
+print(data_modelo)
+
+#HoltWinter1
+data1 = filter(data_modelo, tipologia == "T1")
+demand1 =  ts(data1$KmT, start = c(2018, 1), frequency = 12)
+hw1 <- HoltWinters(demand1)
+forecast1 <- predict(hw1, n.ahead = 12, prediction.interval = T, level = 0.95)
+forecast1 <-round(forecast1,0)
+print(round(forecast1,0))
+#plot(demand1)
+#plot(hw1)
+#plot(hw1, forecast1)
+
+#HoltWinter2
+data2 = filter(data_modelo, tipologia == "T2")
+demand2 =  ts(data2$KmT, start = c(2018, 1), frequency = 12)
+hw2 <- HoltWinters(demand2)
+forecast2 <- predict(hw2, n.ahead = 12, prediction.interval = T, level = 0.95)
+forecast2 <-round(forecast2,0)
+print(round(forecast2,0))
+#plot(demand2)
+#plot(hw2)
+#plot(hw2, forecast2)
+
+#HoltWinter3
+data3 = filter(data_modelo, tipologia == "T3")
+demand3 =  ts(data3$KmT, start = c(2018, 1), frequency = 12)
+hw3 <- HoltWinters(demand3)
+forecast3 <- predict(hw3, n.ahead = 12, prediction.interval = T, level = 0.95)
+forecast3 <-round(forecast3,0)
+print(round(forecast3,0))
+#plot(demand3)
+#plot(hw3)
+#plot(hw3, forecast3)
+
+
+#HoltWinter4
+data4 = filter(data_modelo, tipologia == "T4")
+demand4 =  ts(data4$KmT, start = c(2018, 1), frequency = 12)
+hw4 <- HoltWinters(demand4)
+forecast4 <- predict(hw4, n.ahead = 12, prediction.interval = T, level = 0.95)
+forecast4 <-round(forecast4,0)
+print(round(forecast4,0))
+#plot(demand4)
+#plot(hw4)
+#plot(hw4, forecast4)
+
+
+#HoltWinter5
+data5 = filter(data_modelo, tipologia == "T5")
+demand5 =  ts(data5$KmT, start = c(2018, 1), frequency = 12)
+hw5 <- HoltWinters(demand5)
+forecast5 <- predict(hw5, n.ahead = 12, prediction.interval = T, level = 0.95)
+forecast5 <-round(forecast5,0)
+print(round(forecast5,0))
+#plot(demand5)
+#plot(hw5)
+#plot(hw5, forecast5)
+
+#HoltWinter6
+data6 = filter(data_modelo, tipologia == "T6")
+demand6 =  ts(data6$KmT, start = c(2018, 1), frequency = 12)
+hw6 <- HoltWinters(demand6)
+forecast6 <- predict(hw6, n.ahead = 12, prediction.interval = T, level = 0.95)
+forecast6 <-round(forecast6,0)
+print(round(forecast6,0))
+#plot(demand6)
+#plot(hw6)
+#plot(hw6, forecast6)
+
+
+#HoltWinter7
+data7 = filter(data_modelo, tipologia == "T7")
+demand7 =  ts(data7$KmT, start = c(2018, 1), frequency = 12)
+hw7 <- HoltWinters(demand7)
+forecast7 <- predict(hw7, n.ahead = 12, prediction.interval = T, level = 0.95)
+forecast7 <-round(forecast7,0)
+print(round(forecast7,0))
+#plot(demand7)
+#plot(hw7)
+#plot(hw7, forecast7)
+
+
+#HoltWinter8
+data8 = filter(data_modelo, tipologia == "T8")
+demand8 =  ts(data8$KmT, start = c(2018, 1), frequency = 12)
+hw8 <- HoltWinters(demand8)
+forecast8 <- predict(hw8, n.ahead = 12, prediction.interval = T, level = 0.95)
+forecast8 <-round(forecast8,0)
+print(round(forecast8,0))
+#plot(demand8)
+#plot(hw8)
+#plot(hw8, forecast8)

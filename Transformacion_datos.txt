@@ -1,0 +1,30 @@
+"""
+Created on Fri Nov 27 12:25:16 2020
+@author: Hugo Rojas
+"""
+# -*- coding: utf-8 -*-
+
+import numpy as np
+import pandas as pd
+import os as os
+import re as re
+
+os.getcwd()
+os.chdir('C:/Users/User/OneDrive/Documentos/Personal/GMOVIL/01. Transformacion_datos')
+base = pd.read_csv('data_org.csv', sep=';', encoding='latin-1')
+df = pd.DataFrame(base)
+df.drop(['Tipo Vehiculo','Vehiculo'], axis = 'columns', inplace=True)
+df.columns=['FechaContable','FechaTransaccion','HoraTransaccion','Empresa','RutaSae','Linea','StrParadero','TipoValidacion','StrLinea']  
+df = df.assign(Paradero='', Bus='', StrRutaSae='',Cenefa='')
+df = df[['FechaContable','FechaTransaccion','HoraTransaccion','Empresa','Paradero','StrParadero','Linea','StrLinea','Bus','TipoValidacion','RutaSae','StrRutaSae','Cenefa']]
+print(df.dtypes)
+df['FechaContable'] = pd.to_datetime(df['FechaContable'], format = ('%Y-%m-%d'))
+df['Paradero'] = df['StrParadero'].str.extract('(\d+(?:\.\d+)?)')
+
+#df['StrParadero']=df['StrParadero'].astype(str)
+#df['StrParadero'] = df['StrParadero'].repacle(df['Paradero'], '')
+
+#df['Línea']=df['Línea'].astype(str)
+#df['StrLínea'] = df['Línea'].str.extract(r'(\s)')
+print(df)
+df.to_csv('data_final.csv', index = False)
